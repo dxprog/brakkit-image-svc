@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/dxprog/brakkit-image-svc/issues"
   },
-  "homepage": "https://github.com/dxprog/brakkit-image-svc#readme"
+  "homepage": "https://github.com/dxprog/brakkit-image-svc#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.88.0"
+  }
 }
