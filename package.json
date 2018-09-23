@@ -4,6 +4,7 @@
   "description": "Image generating service for Brakkit",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,17 @@
   },
   "homepage": "https://github.com/dxprog/brakkit-image-svc#readme",
   "dependencies": {
+    "cluster": "^0.7.7",
+    "commander": "^2.18.0",
     "express": "^4.16.3",
-    "request": "^2.88.0"
+    "jimp": "^0.5.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/request": "^2.47.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
   }
 }

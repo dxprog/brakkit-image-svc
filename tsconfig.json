@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/",
+    "noImplicitAny": true,
+    "target": "es2015",
+    "declaration": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "typeRoots": [ "node_modules/@types" ]
+  },
+  "files": [
+    "./src/index.ts"
+  ]
+}
