@@ -70,7 +70,6 @@ export async function generateBanner(characters: Array<ICharacter>): Promise<jim
       const charImg: jimp = await jimp.read(char.image);
 
       charImg.resize(TILE_WIDTH, TILE_HEIGHT);
-      console.log('Blitting', seed, ' to ', point.x, ', ', point.y);
       image.blit(charImg, point.x * TILE_WIDTH, point.y * TILE_HEIGHT);
     }
   }));
