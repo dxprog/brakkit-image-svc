@@ -9,6 +9,6 @@
     "typeRoots": [ "node_modules/@types" ]
   },
   "files": [
-    "./src/index.ts"
+    "./src/app.ts"
   ]
 }
