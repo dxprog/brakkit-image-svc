@@ -14,8 +14,9 @@ program
   .parse(process.argv);
 
 if (cluster.isMaster) {
-  // Spin up two processes per CPU
-  const processCount = os.cpus().length * 2;
+  // we don't expect this to be called much. one process for
+  // every other core (with a minimum of one, of course)
+  const processCount = Math.ceil(os.cpus().length / 2);
 
   console.log(`Master process spinning up ${processCount} children`);
 
@@ -25,6 +26,7 @@ if (cluster.isMaster) {
 
   cluster.on('exit', (worker, code, signal) => {
     console.log(`Process ${worker.process.pid} died`);
+    // re-fork a new process to keep the pool going
   });
 } else {
   const app = new App({
