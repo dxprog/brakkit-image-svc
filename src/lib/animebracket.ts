@@ -1,4 +1,4 @@
-import * as request from 'request-promise-native';
+import request from 'request-promise-native';
 import { ICharacter } from '../interfaces/character';
 
 export async function getBracketCharacters(
@@ -8,4 +8,8 @@ export async function getBracketCharacters(
     url: `https://animebracket.com/api/characters/${bracketPerma}`,
     json: true
   });
+}
+
+export function verifyPerma(perma: string): Boolean {
+  return /^[\w-_]+$/.test(perma);
 }
