@@ -5,6 +5,7 @@ const request = require('request-promise-native');
 
 import { Dictionary, Point } from '../interfaces/common';
 import { ICharacter } from '../interfaces/character';
+import { getBracketCharacters } from '../lib/animebracket';
 
 const BANNER_WIDTH: number = 2000;
 const BANNER_HEIGHT: number = 500;
@@ -79,15 +80,15 @@ export async function generateBanner(characters: Array<ICharacter>): Promise<jim
   return image.blit(overlay, 0, 0);;
 }
 
-export function bannerHandler(req: express.Request, res: express.Response) {
+export async function bannerHandler(req: express.Request, res: express.Response) {
   const perma = req.params.perma.split('.').shift();
+  const data = await getBracketCharacters(perma);
+  if (!Array.isArray(data)) {
+    res.status(404).send();
+    return;
+  }
 
-  request({
-    url: `https://animebracket.com/api/characters/${perma}`,
-    json: true
-  }).then(async (data: Array<ICharacter>) => {
-    const image = await generateBanner(data);
-    const jpeg = await image.getBufferAsync('image/jpeg');
-    res.contentType('image/jpeg').send(jpeg);
-  });
+  const image = await generateBanner(data);
+  const jpeg = await image.getBufferAsync('image/jpeg');
+  res.contentType('image/jpeg').send(jpeg);
 };
