@@ -18,7 +18,7 @@ if (cluster.isMaster) {
   // every other core (with a minimum of one, of course)
   const processCount = Math.ceil(os.cpus().length / 2);
 
-  console.log(`Master process spinning up ${processCount} children`);
+  console.log(`Main process spinning up ${processCount} children`);
 
   for (let i = 0; i < processCount; i++) {
     cluster.fork();
